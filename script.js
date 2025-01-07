@@ -49,4 +49,7 @@ function confirmTransaction() {
 }
 
 // Сообщаем Telegram, что Web App готово к использованию
+console.log(window);
+console.log(window.Telegram);
+
 window.Telegram.WebApp.ready();
