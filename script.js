@@ -42,11 +42,11 @@ function confirmTransaction() {
 
     // send data to bot
     console.log("Отправка данных в бот:", data); 
-    Telegram.WebApp.sendData(JSON.stringify(data));
+    window.Telegram.WebApp.sendData(JSON.stringify(data));
     console.log("Данные отправлены"); 
 
-    Telegram.WebApp.close();
+    window.Telegram.WebApp.close();
 }
 
 // Сообщаем Telegram, что Web App готово к использованию
-Telegram.WebApp.ready();
+window.Telegram.WebApp.ready();
