@@ -41,7 +41,9 @@ function confirmTransaction() {
     };
 
     // send data to bot
+    console.log("Отправка данных в бот:", data); 
     Telegram.WebApp.sendData(JSON.stringify(data));
+    console.log("Данные отправлены"); 
 
     Telegram.WebApp.close();
 }
