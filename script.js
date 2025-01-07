@@ -29,8 +29,21 @@ function confirmTransaction() {
     const rubles = document.getElementById('rubInput').value;
     const coins = document.getElementById('coinInput').value;
 
-    // Отправка данных обратно в Telegram бот
-    Telegram.WebApp.sendData(JSON.stringify({ rubles, coins }));
+    // check on correct data
+    if (!rubles || !coins || isNaN(rubles) || isNaN(coins)) {
+        alert("Пожалуйста, введите корректные значения.");
+        return;
+    }
+
+    const data = {
+        rubles: parseFloat(rubles),
+        coins: parseFloat(coins)
+    };
+
+    // send data to bot
+    Telegram.WebApp.sendData(JSON.stringify(data));
+
+    Telegram.WebApp.close();
 }
 
 // Сообщаем Telegram, что Web App готово к использованию
