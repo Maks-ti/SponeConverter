@@ -45,7 +45,9 @@ function confirmTransaction() {
     window.Telegram.WebApp.sendData(JSON.stringify(data));
     console.log("Данные отправлены"); 
 
-    window.Telegram.WebApp.close();
+    setTimeout(() => {
+            window.Telegram.WebApp.close();
+        }, 100); // Задержка для iOS
 }
 
 // Сообщаем Telegram, что Web App готово к использованию
