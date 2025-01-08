@@ -25,11 +25,19 @@ function convertToRubles() {
     }
 }
 
-function confirmTransaction() {
+// Инициализация MainButton
+window.Telegram.WebApp.MainButton.setParams({
+    text: "Отправить данные",
+    color: "#4CAF50",
+    isVisible: true,
+    isActive: true
+});
+
+window.Telegram.WebApp.MainButton.onClick(() => {
     const rubles = document.getElementById('rubInput').value;
     const coins = document.getElementById('coinInput').value;
 
-    // check on correct data
+    // Проверка корректности данных
     if (!rubles || !coins || isNaN(rubles) || isNaN(coins)) {
         alert("Пожалуйста, введите корректные значения.");
         return;
@@ -40,18 +48,10 @@ function confirmTransaction() {
         coins: parseFloat(coins)
     };
 
-    // send data to bot
-    console.log("Отправка данных в бот:", data); 
+    console.log("Отправка данных в бот:", data);
     window.Telegram.WebApp.sendData(JSON.stringify(data));
-    console.log("Данные отправлены"); 
+    console.log("Данные отправлены");
+});
 
-    setTimeout(() => {
-            window.Telegram.WebApp.close();
-        }, 100); // Задержка для iOS
-}
-
-// Сообщаем Telegram, что Web App готово к использованию
-console.log(window);
-console.log(window.Telegram);
-
+// Сообщаем Telegram, что WebApp готово к использованию
 window.Telegram.WebApp.ready();
