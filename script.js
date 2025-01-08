@@ -25,20 +25,19 @@ function convertToRubles() {
     }
 }
 
-// Сообщаем Telegram, что WebApp готово к использованию
-window.Telegram.WebApp.ready();
+// Активируем MainButton после взаимодействия пользователя
+function activateMainButton() {
+    window.Telegram.WebApp.MainButton.setParams({
+        text: "Отправить данные",
+        color: "#4CAF50",
+        isVisible: true,
+        isActive: true
+    });
 
-// Инициализация MainButton
-window.Telegram.WebApp.MainButton.setParams({
-    text: "Отправить данные",
-    color: "#4CAF50",
-    isVisible: true,
-    isActive: true
-});
+    window.Telegram.WebApp.MainButton.show();
+}
 
-// Явно показываем кнопку
-window.Telegram.WebApp.MainButton.show();
-
+// Обработчик нажатия MainButton
 window.Telegram.WebApp.MainButton.onClick(() => {
     const rubles = document.getElementById('rubInput').value;
     const coins = document.getElementById('coinInput').value;
@@ -59,4 +58,5 @@ window.Telegram.WebApp.MainButton.onClick(() => {
     console.log("Данные отправлены");
 });
 
-
+// Сообщаем Telegram, что WebApp готово к использованию
+window.Telegram.WebApp.ready();
