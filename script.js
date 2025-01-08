@@ -25,6 +25,9 @@ function convertToRubles() {
     }
 }
 
+// Сообщаем Telegram, что WebApp готово к использованию
+window.Telegram.WebApp.ready();
+
 // Инициализация MainButton
 window.Telegram.WebApp.MainButton.setParams({
     text: "Отправить данные",
@@ -32,6 +35,9 @@ window.Telegram.WebApp.MainButton.setParams({
     isVisible: true,
     isActive: true
 });
+
+// Явно показываем кнопку
+window.Telegram.WebApp.MainButton.show();
 
 window.Telegram.WebApp.MainButton.onClick(() => {
     const rubles = document.getElementById('rubInput').value;
@@ -53,5 +59,4 @@ window.Telegram.WebApp.MainButton.onClick(() => {
     console.log("Данные отправлены");
 });
 
-// Сообщаем Telegram, что WebApp готово к использованию
-window.Telegram.WebApp.ready();
+
