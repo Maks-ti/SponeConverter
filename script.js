@@ -35,6 +35,9 @@ function activateMainButton() {
     });
 
     window.Telegram.WebApp.MainButton.show();
+
+    // Сообщаем Telegram, что WebApp готово к использованию
+    window.Telegram.WebApp.ready();
 }
 
 // Обработчик нажатия MainButton
@@ -57,6 +60,3 @@ window.Telegram.WebApp.MainButton.onClick(() => {
     window.Telegram.WebApp.sendData(JSON.stringify(data));
     console.log("Данные отправлены");
 });
-
-// Сообщаем Telegram, что WebApp готово к использованию
-window.Telegram.WebApp.ready();
