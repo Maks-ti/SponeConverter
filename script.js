@@ -13,9 +13,18 @@ if (isNaN(exchangeRate) || exchangeRate <= 0) {
 
 // // // swap if sell
 // Получаем параметр type из URL
-const type = urlParams.get('type');
+const op_type = urlParams.get('type');
+console.log(op_type)
+// Проверяем, что параметр есть
+if (op_type != 'sell' && op_type != 'buy') {
+    document.body.innerHTML = `
+        <h3 style="color: red;">Ошибка: Некорректный тип операции.</h3>
+        <p>Пожалуйста, перезапустите приложение с правильными параметрами.</p>
+    `;
+    throw new Error("Некорректный тип операции. Завершение приложения.");
+}
 // Если type === "sell", меняем местами блоки
-if (type === 'sell') {
+if (op_type === 'sell') {
     const rubField = document.getElementById('rubInput');
     const coinField = document.getElementById('coinInput');
     const inputGroup = rubField.parentElement;
