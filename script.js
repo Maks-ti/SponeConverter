@@ -11,6 +11,20 @@ if (isNaN(exchangeRate) || exchangeRate <= 0) {
     throw new Error("Некорректный курс валют. Завершение приложения.");
 }
 
+// // // swap if sell
+// Получаем параметр type из URL
+const type = urlParams.get('type');
+// Если type === "sell", меняем местами блоки
+if (type === 'sell') {
+    const rubField = document.getElementById('rubInput');
+    const coinField = document.getElementById('coinInput');
+    const inputGroup = rubField.parentElement;
+
+    // Меняем их местами
+    inputGroup.insertBefore(coinField, rubField);
+}
+
+
 function convertToCoins() {
     const rubles = parseFloat(document.getElementById('rubInput').value);
     if (!isNaN(rubles)) {
