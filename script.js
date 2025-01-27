@@ -37,14 +37,14 @@ if (op_type === 'sell') {
 function convertToCoins() {
     const rubles = parseFloat(document.getElementById('rubInput').value);
     if (!isNaN(rubles)) {
-        document.getElementById('coinInput').value = (rubles / exchangeRate).toFixed(6);
+        document.getElementById('coinInput').value = (rubles * exchangeRate).toFixed(6);
     }
 }
 
 function convertToRubles() {
     const coins = parseFloat(document.getElementById('coinInput').value);
     if (!isNaN(coins)) {
-        document.getElementById('rubInput').value = (coins * exchangeRate).toFixed(6);
+        document.getElementById('rubInput').value = (coins / exchangeRate).toFixed(6);
     }
 }
 
